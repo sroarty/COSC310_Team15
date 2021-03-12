@@ -36,10 +36,16 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // -- - Enable webhook call for this intent
     // -- - Enable webhook call for slot filling
     
-
     if(location == "hand") callEvent(agent, "HandPain"); 
     if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");
+    if(location == "head") {
+      if(painType == "stabbing") {
+        callEvent(agent, "StabbingHeadache");
+      }
+      else callEvent(agent, "HeadPain");
+    }
+    if(location == "neck") callEvent(agent, "NeckPain");
   }
 
   // -- Calls the event attached to a specific intent

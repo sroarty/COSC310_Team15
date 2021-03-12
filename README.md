@@ -1,2 +1,0 @@
-# COSC310_Team15
-COSC310_

@@ -19,7 +19,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // parameters gathered by the QueryHandler
     var painType = agent.parameters["paintypes"];
     var injury = agent.parameters["injury"];
-    var location = agent.parameters["specific-location"];
+    var location = agent.parameters["specific-location"];    
+    var causeOfPain = agent.parameters["causeOfPain"];
+
 
     
     // Using the parameters above, the correct intent can
@@ -70,6 +72,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     }
     if(location == "neck") callEvent(agent, "NeckPain");
     callEvent(agent, "FallBack"); // If nothing matches...
+  }
+  if (location == "ankle"){
+    if(causeOfPain == "rolled"){
+      callEvent(agent, "rolled")
+    }
   }
 
   // -- Calls the event attached to a specific intent

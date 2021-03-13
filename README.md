@@ -11,3 +11,4 @@ CallEvent function - when this function is used to set a follow up event given a
 If/Else statemets - identify location (body part that user inputs) in order to call the associated event.
 
 
+![(forreadme)](https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf)

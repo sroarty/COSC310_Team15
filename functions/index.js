@@ -39,11 +39,30 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
     if(location == "hand"){
       if(injury == "burn") callEvent(agent, "HandBurn")
-      else if()
+      if(painType == "stiff") callEvent(agent, "StiffHand")
       else callEvent(agent, "HandPain")
     } 
+    if(location == "elbow"){
+      if(painType = "sharp") callEvent(agent,"SharpPainElbow")
+    }
+    if (location == "wrist"){
+
+    }
+    if (location == "forearm"){
+
+    }
+    if (location == "bicep"){
+
+    }
+    if (location == "tricep"){
+
+    }
+    if (location == "shoulder"){
+
+    }
     if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");
+
   }
 
   // -- Calls the event attached to a specific intent

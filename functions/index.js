@@ -46,6 +46,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       else callEvent(agent, "HeadPain");
     }
     if(location == "neck") callEvent(agent, "NeckPain");
+    callEvent(agent, "FallBack"); // If nothing matches...
   }
 
   // -- Calls the event attached to a specific intent

@@ -2,25 +2,25 @@
 // for Dialogflow fulfillment library docs, samples, and to report issues
 
 'use strict';
- 
+
 const functions = require('firebase-functions');
 const {WebhookClient} = require('dialogflow-fulfillment');
 const {Card, Suggestion} = require('dialogflow-fulfillment');
- 
+
 process.env.DEBUG = 'dialogflow:debug'; // enables lib debugging statements
- 
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, response) => {
   const agent = new WebhookClient({ request, response });
   console.log('Dialogflow Request headers: ' + JSON.stringify(request.headers));
   console.log('Dialogflow Request body: ' + JSON.stringify(request.body));
- 
+
 
   function WebCallIntent(agent) {   
     // parameters gathered by the QueryHandler
     var painType = agent.parameters["paintypes"];
     var injury = agent.parameters["injury"];
-    var location = agent.parameters["specific-location"];    
-    var causeOfPain = agent.parameters["causeOfPain"]; // testingchange
+    var location = agent.parameters["specific-location"];
+    var causeOfPain = agent.parameters["causeOfPain"];
 
 
     
@@ -37,60 +37,48 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // -- At the bottom of the intent screen, select:
     // -- - Enable webhook call for this intent
     // -- - Enable webhook call for slot filling
-    
 
-    if(location == "hand"){
-      if(injury == "burn") callEvent(agent, "HandBurn")
-      if(painType == "stiff") callEvent(agent, "StiffHand")
-      else callEvent(agent, "HandPain")
+    // --- ARMS ---
+    if(location == "hand") {
+      if(injury == "burn") callEvent(agent, "HandBurn");
+      else if(painType == "stiff") callEvent(agent, "StiffHand");
+      else callEvent(agent, "HandPain");
     } 
+
     if(location == "elbow"){
-      if(painType = "sharp") callEvent(agent,"SharpPainElbow")
-    }
-    if (location == "wrist"){
-      callEvent(agent, "WristPain")
-    }
-    if (location == "forearm"){
-      callEvent(agent, "ForearmPain")
-    }
-    if (location == "bicep"){
-      callEvent(agent, "BicepPain")
-    }
-    if (location == "tricep"){
-      callEvent(agent, "TricepPain")
-    }
-    if (location == "shoulder"){
-      callEvent(agent, "ShoulderPain")
-    }
-    if (location == "calf"){
-      callEvent(agent, "calfpain")
-    }
-    if (location == "foot"){
-      callEvent(agent, "footpain")
-    }
-    if(causeOfPain == "walking"){
-      callEvent(agent, "walkingPain")
+      if(painType =="sharp") callEvent(agent,"SharpPainElbow")
+      else callEvent(agent, "ElbowPain");
     }
 
+    if (location == "wrist") callEvent(agent, "WristPain");
+    if (location == "forearm") callEvent(agent, "ForearmPain");
+    if (location == "bicep") callEvent(agent, "BicepPain");
+    if (location == "tricep") callEvent(agent, "TricepPain");
+    if (location == "shoulder") callEvent(agent, "ShoulderPain");
+    // -----------
+
+    // --- LEGS ---
+    if (location == "calf") callEvent(agent, "calfpain");
+    if (location == "foot") callEvent(agent, "footpain");
+    if (causeOfPain == "walking") callEvent(agent, "walkingPain");
     if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");
+
+    if (location == "ankle") {
+      if(causeOfPain == "rolled") callEvent(agent, "rolled");
+      else callEvent(agent, "anklePain");    
+    }
+    // ------------
+
+    // --- HEAD & NECK ---
     if(location == "head") {
-      if(painType == "stabbing") {
-        callEvent(agent, "StabbingHeadache");
-      }
+      if(painType == "stabbing") callEvent(agent, "StabbingHeadache");
       else callEvent(agent, "HeadPain");
     }
-    if(location == "neck") callEvent(agent, "NeckPain");
-    callEvent(agent, "FallBack"); // If nothing matches...
+    if (location == "neck") callEvent(agent, "NeckPain");
+    // ------------
   }
-  if (location == "ankle"){
-    if(causeOfPain == "rolled"){
-      callEvent(agent, "rolled")
-    }
-    else{
-      callEvent(agent, "anklePain")
-    }
-  }
+
 
   // -- Calls the event attached to a specific intent
   // -- which switches the chatbot to that intent
@@ -103,4 +91,4 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
   let intentMap = new Map();
   intentMap.set('QueryHandler', WebCallIntent);
   agent.handleRequest(intentMap);
-});
+}); 

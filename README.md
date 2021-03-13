@@ -4,7 +4,7 @@
 ## Class Organization & How to compile and run the code.
 Since we have integrated Google's DialogFlow API for our project, we have implemented a QueryHandler intent within our DialogFlow agent which collects the parameters from a user prompt such as the indicated pain, location of pain etc. Here we have our back-end. Based on the information gathered by the QueryHandler the back-end then calls the event that is attached to the correct intent. In other words, an intent is called by invoking an event from the back-end.
 
-##Specifics about index.js:
+## Specifics about index.js:
 WebCallIntent function - assigns a variable to an agent parameter; consider this funtion to be what gathers the parameters from the QueryHandler.
 CallEvent function - when this function is used to set a follow up event given a specific agent and event.
 If/Else statemets - identify location (body part that user inputs) in order to call the associated event.

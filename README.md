@@ -9,5 +9,5 @@ WebCallIntent function - assigns a variable to an agent parameter; consider this
 CallEvent function - when this function is used to set a follow up event given a specific agent and event.
 If/Else statemets - identify location (body part that user inputs) in order to call the associated event.
 
-Breakdown of how a conversation is outlined:
+**Breakdown of how a conversation is outlined:**
 https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf

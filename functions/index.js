@@ -37,7 +37,11 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     // -- - Enable webhook call for slot filling
     
 
-    if(location == "hand") callEvent(agent, "HandPain"); 
+    if(location == "hand"){
+      if(injury == "burn") callEvent(agent, "HandBurn")
+      else if()
+      else callEvent(agent, "HandPain")
+    } 
     if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");
   }

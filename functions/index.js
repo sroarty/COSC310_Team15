@@ -46,19 +46,19 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
       if(painType = "sharp") callEvent(agent,"SharpPainElbow")
     }
     if (location == "wrist"){
-
+      callEvent(agent, "WristPain")
     }
     if (location == "forearm"){
-
+      callEvent(agent, "ForearmPain")
     }
     if (location == "bicep"){
-
+      callEvent(agent, "BicepPain")
     }
     if (location == "tricep"){
-
+      callEvent(agent, "TricepPain")
     }
     if (location == "shoulder"){
-
+      callEvent(agent, "ShoulderPain")
     }
     if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");

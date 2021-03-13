@@ -46,7 +46,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     } 
 
     if(location == "elbow"){
-      if(painType =="sharp") callEvent(agent,"SharpPainElbow");
+      if(painType =="sharp pain") callEvent(agent,"SharpPainElbow");
       else callEvent(agent, "ElbowPain");
     }
 

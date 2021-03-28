@@ -5,9 +5,21 @@
 Since we have integrated Google's DialogFlow API for our project, we have implemented a QueryHandler intent within our DialogFlow agent which collects the parameters from a user prompt such as the indicated pain, location of pain etc. Here we have our back-end. Based on the information gathered by the QueryHandler the back-end then calls the event that is attached to the correct intent. In other words, an intent is called by invoking an event from the back-end.
 
 ## Specifics about index.js:
-WebCallIntent function - assigns a variable to an agent parameter; consider this funtion to be what gathers the parameters from the QueryHandler.
-CallEvent function - when this function is used to set a follow up event given a specific agent and event.
+WebCallIntent function - assigns a variable to an agent parameter; consider this funtion to be what gathers the parameters from the QueryHandler.  
+CallEvent function - when this function is used to set a follow up event given a specific agent and event.  
 If/Else statemets - identify location (body part that user inputs) in order to call the associated event.
 
 **Breakdown of how a conversation is outlined:**
 https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
+
+# Updates from Assignment 3
+## List of features implemented
+- An extra topic. 
+- 5 reasonable responses (when the user enters something outside the two topics). 
+- Spelling mistakes (Fuzzy matching). 
+- Entity Matching. 
+- Synonym Recognition. 
+- Sentiment Analysis. 
+## Documentation
+**How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature: **
+**Summary of test cases: **

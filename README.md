@@ -21,5 +21,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 - Synonym Recognition. 
 - Sentiment Analysis. 
 ## Documentation
-**How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature: **. 
+**How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature: **
+
+
 **Summary of test cases: **

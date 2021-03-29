@@ -61,7 +61,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     if (location == "calves") callEvent(agent, "calfpain");
     if (location == "feet") callEvent(agent, "footpain");
     if (causeOfPain == "walking") callEvent(agent, "walkingPain");
-    if(location == "chest" || location == "abdomen") callEvent(agent, "ChestPain");
+    if(location == "chest") callEvent(agent, "ChestPain");
     if(location == "legs") callEvent(agent, "LegPain");
 
     if (location == "ankle") {

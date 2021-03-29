@@ -22,7 +22,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     var location = agent.parameters["specific-location"];
     var causeOfPain = agent.parameters["causeOfPain"];
 
-
     
     // Using the parameters above, the correct intent can
     // be called by invoking the event attached. By default,
@@ -77,8 +76,23 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     }
     if (location == "neck") callEvent(agent, "NeckPain");
     // ------------
-  }
 
+    //EXCERSISE CALLS
+    if(location == "shoulders") callEvent(agent, )
+  }
+  function WebCallExercise(agent){
+    var location = agent.parameters["specific-location"];
+    
+    if (location == "bicep") callEvent(agent, "ExerciseBicep");
+    else if (location == "tricep") callEvent(agent, "ExerciseTricep");
+    else if (location == "shoulder") callEvent(agent, "ExerciseShoulder");
+    else if (location == "abs") callEvent(agent, "ExerciseAbdomen");
+    else if (location == "chest") callEvent(agent, "ExerciseChest");
+    else if (location == "quads") callEvent(agent, "ExerciseQuadricep");
+    else if (location == "calf") callEvent(agent, "ExerciseCalf");
+    else if (location == "hamstring") callEvent(agent, "ExerciseHamstring");
+    else callEvent(agent, "noExercise");
+  }
 
   // -- Calls the event attached to a specific intent
   // -- which switches the chatbot to that intent
@@ -89,6 +103,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
-  intentMap.set('QueryHandler', WebCallIntent);
+  //using exercise entity to decise which query handler to call
+  var exercise = agent.parameters["exercise"];
+  if(exercise == "exercise") intentMap.set('ExerciseQueryHandler',WebCallExercise);
+  else intentMap.set('QueryHandler', WebCallIntent);
   agent.handleRequest(intentMap);
 }); 

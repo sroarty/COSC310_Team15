@@ -48,10 +48,10 @@ it('HeadPain', async function() {
   it(async function() {
     
     const resJson = await dialogflow.detectIntent(
-      'i have pain burning pain in my back');
+      'i have pain burning pain in my neck');
     expect(resJson.queryResult).to.include.deep.keys('parameters');
 
     expect(resJson.queryResult.parameters).to.deep.equal({
-      'paintypes': 'burning',
+      'paintypes': 'burning', 'specific-location': 'neck',
     });
   });

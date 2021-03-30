@@ -41,3 +41,6 @@ https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6b
 https://github.com/sroarty/COSC310_Team15/blob/main/testing/index-test.js
   
 **Final Documentation:**
+https://github.com/sroarty/COSC310_Team15/blob/main/COSC%20310%20-%20Final%20Documentation.pdf
+  
+  

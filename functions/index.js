@@ -77,8 +77,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     if (location == "neck") callEvent(agent, "NeckPain");
     // ------------
 
-    //EXCERSISE CALLS
-    if(location == "shoulders") callEvent(agent, )
+    
   }
   function WebCallExercise(agent){
     var location = agent.parameters["specific-location"];
@@ -103,9 +102,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
 
   // Run the proper function handler based on the matched Dialogflow intent name
   let intentMap = new Map();
-  //using exercise entity to decise which query handler to call
-  var exercise = agent.parameters["exercise"];
-  if(exercise == "exercise") intentMap.set('ExerciseQueryHandler',WebCallExercise);
-  else intentMap.set('QueryHandler', WebCallIntent);
+  intentMap.set('ExerciseQueryHandler',WebCallExercise);
+  intentMap.set('QueryHandler', WebCallIntent);
   agent.handleRequest(intentMap);
 }); 

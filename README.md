@@ -14,6 +14,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 
 # Updates for Assignment 3
 ## List of features implemented
+- A simple GUI.  
 - An extra topic. 
 - 5 reasonable responses (when the user enters something outside the two topics). 
 - Spelling mistakes (Fuzzy matching). 
@@ -24,13 +25,15 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 **How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature:**
 
 **Level 0 Data Flow Diagram:**
-https://github.com/sroarty/COSC310_Team15/blob/main/Level%200%20DFD.pdf
+https://github.com/sroarty/COSC310_Team15/blob/main/Level0_DFD.pdf
   
 **Level 1 Data Flow Diagram:**
-https://github.com/sroarty/COSC310_Team15/blob/main/Level%201%20DFD.pdf 
+https://github.com/sroarty/COSC310_Team15/blob/main/Level1_DFD.pdf
   
 **Summary of test cases:**
 https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Test%20Cases.pdf
-
+  
 **Sample output and limitations:**
 https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6bd21f513/Sample%20output%20&%20limitations.pdf
+  
+**Final Documentation:**

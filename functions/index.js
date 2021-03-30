@@ -77,9 +77,10 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     if (location == "neck") callEvent(agent, "NeckPain");
     // ------------
 
-        // --- UPPER BODY --- 
-        if(location == "back") callEvent(agent, "BackPain");
-        // -----------
+
+    // --- UPPER BODY --- 
+    if(location == "back") callEvent(agent, "BackPain");
+    // -----------
     
   }
   function WebCallExercise(agent){

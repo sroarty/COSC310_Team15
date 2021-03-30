@@ -37,4 +37,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Test%20Cases.pdf
 **Sample output and limitations:**
 https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6bd21f513/Sample%20output%20&%20limitations.pdf
   
+**Bonus:** Design test cases using unit testing framework; test the corrct intent metadata is extracted from the user query.
+https://github.com/sroarty/COSC310_Team15/blob/main/testing/index-test.js
+  
 **Final Documentation:**

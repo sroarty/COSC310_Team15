@@ -22,7 +22,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 - Synonym Recognition. 
 - Sentiment Analysis. 
 ## Documentation
-**How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature:**
+**How features are used to improve agent's conversation and snippets of a conversation to demonstrate the feature:**
 https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Features%20Explanation.pdf
   
 **Level 0 Data Flow Diagram:**
@@ -37,7 +37,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Test%20Cases.pdf
 **Sample output and limitations:**
 https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6bd21f513/Sample%20output%20&%20limitations.pdf
   
-**Bonus:** Design test cases using unit testing framework; test the corrct intent metadata is extracted from the user query.
+**Bonus:** Design test cases using unit testing framework; test the correct intent metadata is extracted from the user query.
 https://github.com/sroarty/COSC310_Team15/blob/main/testing/index-test.js
   
 **Final Documentation:**

@@ -32,5 +32,5 @@ https://github.com/sroarty/COSC310_Team15/blob/main/Level%201%20DFD.pdf
 **Summary of test cases:**
 https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Test%20Cases.pdf
 
-**Sample output and limitations. **
+**Sample output and limitations:**
 https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6bd21f513/Sample%20output%20&%20limitations.pdf

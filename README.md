@@ -22,8 +22,7 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 - Synonym Recognition. 
 - Sentiment Analysis. 
 ## Documentation
-**How features are used to improve agent's conversation and snippets of a conversation to demonstrate the feature:**
-https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Features%20Explanation.pdf
+[How features are used to improve agent's conversation and snippets of a conversation to demonstrate the feature:] (./COSC310-%20Features%20Explanation.pdf)
   
 **Level 0 Data Flow Diagram:**
 https://github.com/sroarty/COSC310_Team15/blob/main/Level0_DFD.pdf

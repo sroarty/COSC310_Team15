@@ -26,19 +26,14 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
   
 [Level 0 Data Flow Diagram](./COSC310_Team15/blob/main/Level0_DFD.pdf)
   
-**Level 1 Data Flow Diagram:**
-https://github.com/sroarty/COSC310_Team15/blob/main/Level1_DFD.pdf
+[Level 1 Data Flow Diagram](./Level1_DFD.pdf)
   
-**Summary of test cases:**
-https://github.com/sroarty/COSC310_Team15/blob/main/COSC310-%20Test%20Cases.pdf
+[Summary of test cases](./COSC310-%20Test%20Cases.pdf)
   
-**Sample output and limitations:**
-https://github.com/sroarty/COSC310_Team15/blob/d5ec07fb52d419d5a8f4df15d6f432b6bd21f513/Sample%20output%20&%20limitations.pdf
+[Sample output and limitations](./Sample%20output%20&%20limitations.pdf)
   
-**Bonus:** Design test cases using unit testing framework; test the correct intent metadata is extracted from the user query.
-https://github.com/sroarty/COSC310_Team15/blob/main/testing/index-test.js
+[Bonus:Design test cases using unit testing framework; test the correct intent metadata is extracted from the user query.](./testing/index-test.js)
   
-**Final Documentation:**
-https://github.com/sroarty/COSC310_Team15/blob/main/COSC%20310%20-%20Final%20Documentation.pdf
+[Final Documentation](./COSC%20310%20-%20Final%20Documentation.pdf)
   
   

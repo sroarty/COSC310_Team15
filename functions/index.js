@@ -21,6 +21,9 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     var injury = agent.parameters["injury"];
     var location = agent.parameters["specific-location"];
     var causeOfPain = agent.parameters["causeOfPain"];
+    if(agent.queryText == "Rosebud") {
+      callEvent(agent, "Rosebud");
+    }
 
     
     // Using the parameters above, the correct intent can

@@ -36,7 +36,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       agentName = agentName[1];
       // CASE: Default group-project agent
       if (agentName == "testagent-ct99") defaultAgent(agent);
-      if (agentName == "AmeliaPlaceholder") ameliaAgent(agent);
+      if (agentName == "ameliaphysiobot-itxw") ameliaAgent(agent);
       if (agentName == "SeanPlaceholder") seanAgent(agent);
       if (agentName == "RyanPlaceholder") ryanAgent(agent);
       if (agentName == "AmneetPlaceholder") amneetAgent(agent);

@@ -2,17 +2,18 @@
 // for Dialogflow fulfillment library docs, samples, and to report issues
 
 "use strict";
-
+const API_KEY = "";
 const functions = require("firebase-functions");
 const { WebhookClient } = require("dialogflow-fulfillment");
 const { Card, Suggestion } = require("dialogflow-fulfillment");
+const { Client } = require("@googlemaps/google-maps-services-js");
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
   (request, response) => {
     const agent = new WebhookClient({ request, response });
-    console.log("---");
+    /*console.log("---");
     console.log(
       "Dialogflow Request headers: " + JSON.stringify(request.headers)
     );
@@ -21,7 +22,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       "Dialogflow Response headers: " + JSON.stringify(response.headers)
     );
     console.log("Dialogflow Response body: " + JSON.stringify(response.body));
-    console.log("---");
+    console.log("---");*/
 
     function WebCallIntent(agent) {
       // parameters gathered by the QueryHandler
@@ -44,19 +45,19 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
       function ameliaAgent(agent) {
         // code here
-      };
+      }
       function seanAgent(agent) {
         // code here
-      };
+      }
       function ryanAgent(agent) {
         // code here
-      };
+      }
       function amneetAgent(agent) {
         // code here
-      };
+      }
       function daniilAgent(agent) {
         // code here
-      };
+      }
 
       function defaultAgent(agent) {
         // --- ARMS ---
@@ -104,7 +105,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
         // -----------
       }
     }
-    
+
     function WebCallExercise(agent) {
       var location = agent.parameters["specific-location"];
 
@@ -127,6 +128,54 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     }
 
     // Run the proper function handler based on the matched Dialogflow intent name
+    console.log("---- Beginning of Call ----");
+
+    //----- Testing Maps
+    console.log("Creating client\n");
+    const client = new Client({});
+    client
+      .elevation({
+        params: {
+          locations: [{ lat: 45, lng: -110 }],
+          key: API_KEY,
+        },
+        timeout: 2000, // milliseconds
+      })
+      .then((r) => {
+        console.log("--FIRST MAPS CALL SUCCEEDED---");
+        console.log(r.data.results[0].elevation);
+      })
+      .catch((e) => {
+        console.log("--FIRST MAPS CALL FAILED---");
+        console.log(e.response.data.error_message);
+      });
+    console.log("First maps function finished\n");
+
+    var userLat;
+    var userLong;
+
+    client
+      .geocode({
+        params: {
+          address: "12417 233A St, Maple Ridge, BC",
+          key: API_KEY,
+        },
+        timeout: 2000, // milliseconds
+      })
+      .then((r) => {
+        console.log("--SECOND MAPS CALL SUCCEEDED---");
+        userLat = r.data.results[0].geometry.location.lat;
+        userLong = r.data.results[0].geometry.location.lng;
+        console.log("\nUSER LAT: " + userLat);
+        console.log("\nUSER LONG: " + userLong);
+      })
+      .catch((e) => {
+        console.log("--SECOND MAPS CALL FAILED---");
+        console.log(e.response.data.error_message);
+      });
+    console.log("Second maps function finished\n");
+    //----- Testing Maps
+
     let intentMap = new Map();
     intentMap.set("ExerciseQueryHandler", WebCallExercise);
     intentMap.set("QueryHandler", WebCallIntent);

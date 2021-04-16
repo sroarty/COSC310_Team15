@@ -10,6 +10,36 @@ const { Client } = require("@googlemaps/google-maps-services-js");
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
 
+function getCoords(userAddress) {
+  //----- Testing Maps
+  console.log("Creating client\n");
+  var client = new Client({});
+  var userLat;
+  var userLong;
+
+  client
+    .geocode({
+      params: {
+        address: userAddress,
+        key: API_KEY,
+      },
+      timeout: 2000, // milliseconds
+    })
+    .then((r) => {
+      console.log("--MAPS CALL SUCCEEDED--");
+      userLat = r.data.results[0].geometry.location.lat;
+      userLong = r.data.results[0].geometry.location.lng;
+      console.log("\nUSER LAT: " + userLat);
+      console.log("\nUSER LONG: " + userLong);
+    })
+    .catch((e) => {
+      console.log("--SECOND MAPS CALL FAILED---");
+      console.log(e.response.data.error_message);
+    });
+  console.log("Second maps function finished\n");
+  return [userLat, userLong];
+}
+
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
   (request, response) => {
     const agent = new WebhookClient({ request, response });
@@ -42,7 +72,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       if (agentName == "chatbot-physio-bglf") ryanAgent(agent);
       if (agentName == "AmneetPlaceholder") amneetAgent(agent);
       if (agentName == "DaniilPlaceholder") daniilAgent(agent);
-
+      console.log("\nHere is the lattitude: " + getCoords("802 Academy Way, Kelowna, BC")[0]);
       function ameliaAgent(agent) {
         // code here
       }
@@ -129,52 +159,6 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
 
     // Run the proper function handler based on the matched Dialogflow intent name
     console.log("---- Beginning of Call ----");
-
-    //----- Testing Maps
-    console.log("Creating client\n");
-    const client = new Client({});
-    client
-      .elevation({
-        params: {
-          locations: [{ lat: 45, lng: -110 }],
-          key: API_KEY,
-        },
-        timeout: 2000, // milliseconds
-      })
-      .then((r) => {
-        console.log("--FIRST MAPS CALL SUCCEEDED---");
-        console.log(r.data.results[0].elevation);
-      })
-      .catch((e) => {
-        console.log("--FIRST MAPS CALL FAILED---");
-        console.log(e.response.data.error_message);
-      });
-    console.log("First maps function finished\n");
-
-    var userLat;
-    var userLong;
-
-    client
-      .geocode({
-        params: {
-          address: "12417 233A St, Maple Ridge, BC",
-          key: API_KEY,
-        },
-        timeout: 2000, // milliseconds
-      })
-      .then((r) => {
-        console.log("--SECOND MAPS CALL SUCCEEDED---");
-        userLat = r.data.results[0].geometry.location.lat;
-        userLong = r.data.results[0].geometry.location.lng;
-        console.log("\nUSER LAT: " + userLat);
-        console.log("\nUSER LONG: " + userLong);
-      })
-      .catch((e) => {
-        console.log("--SECOND MAPS CALL FAILED---");
-        console.log(e.response.data.error_message);
-      });
-    console.log("Second maps function finished\n");
-    //----- Testing Maps
 
     let intentMap = new Map();
     intentMap.set("ExerciseQueryHandler", WebCallExercise);

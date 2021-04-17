@@ -38,10 +38,12 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
   
 # Update for Final individual project
 ## List of New Features
-- Directions API to local clinic
+- Directions API (Attempted)
+- Places API (Attempted)
 
 ## Explanation
-The directions API is called from an intent inside the dialogflow interface. The fullfilment aspect is then used to make a call to the directions api and the resulting json is then processed and is displayed in the chat
+In this assignment my plan was to attempt to integrate these two api's into my group's A3 output. Unfortunately i lacked the required experience and skillset to implement these features. My problems came from the fact that I was unable to properly formulate the request and response callse to the api and display the necessary output to the bot's chat feature. I hope this documentation is enough to warrant at least partial credit as I have invested many hours into learning how to try to implement these features
+
 
 
   

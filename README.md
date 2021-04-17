@@ -23,6 +23,9 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 ## Documentation
 **How features are used to improve agent's conversation and snippet of a conversation to demonstrate the feature:**
 
+## Language Translation:
+For the individual project I have made our physiobot be able to speak in a different language. The bot is able to take input in the French language for some of the phrases which we had before.  
+
 **Level 0 Data Flow Diagram:**
 https://github.com/sroarty/COSC310_Team15/blob/main/Level%200%20DFD.pdf
   

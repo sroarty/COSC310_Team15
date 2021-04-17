@@ -35,5 +35,9 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
 [Bonus:Design test cases using unit testing framework; test the correct intent metadata is extracted from the user query.](./testing/index-test.js)
   
 [Final Documentation](./COSC%20310%20-%20Final%20Documentation.pdf)
-  
+
+# Updates for Individual Assignment (Sean Roarty)
+## List of features implemente
+- Added functionality using Google Maps API to tell the user how far away the Physiotherapist's office is by car by using their given address in the appointment data. 
+- (Only implemented on back-end) Added functionality for turn-by-turn directions by parsing the user's address into geolocational coordinates, but it was simply too verbose for the chatbot, and unfortunately, there wasn't enough time to implement this feature elegantly.
   

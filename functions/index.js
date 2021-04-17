@@ -2,7 +2,7 @@
 // for Dialogflow fulfillment library docs, samples, and to report issues
 
 "use strict";
-const API_KEY = "";
+const API_KEY = "AIzaSyBc9gkW8vWsz0tIEwO_a-prt-tNQcxjn90";
 const functions = require("firebase-functions");
 const { WebhookClient } = require("dialogflow-fulfillment");
 const { Card, Suggestion } = require("dialogflow-fulfillment");
@@ -10,34 +10,33 @@ const { Client } = require("@googlemaps/google-maps-services-js");
 
 process.env.DEBUG = "dialogflow:debug"; // enables lib debugging statements
 
-function getCoords(userAddress) {
+async function getCoords(userAddress) {
   //----- Testing Maps
   console.log("Creating client\n");
   var client = new Client({});
-  var userLat;
-  var userLong;
 
-  client
+  return await client
     .geocode({
       params: {
         address: userAddress,
         key: API_KEY,
       },
       timeout: 2000, // milliseconds
-    })
-    .then((r) => {
-      console.log("--MAPS CALL SUCCEEDED--");
-      userLat = r.data.results[0].geometry.location.lat;
-      userLong = r.data.results[0].geometry.location.lng;
-      console.log("\nUSER LAT: " + userLat);
-      console.log("\nUSER LONG: " + userLong);
-    })
-    .catch((e) => {
-      console.log("--SECOND MAPS CALL FAILED---");
-      console.log(e.response.data.error_message);
     });
-  console.log("Second maps function finished\n");
-  return [userLat, userLong];
+}
+
+async function getDistance(userAddress) {
+  var client = new Client({});
+
+  return await client
+    .distancematrix({
+      params: {
+        origins: [userAddress],
+        destinations: ["3333 University Way, Kelowna, BC V1V 1V7"],
+        key: API_KEY,
+      },
+      timeout: 2000, // milliseconds
+    });
 }
 
 exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
@@ -54,12 +53,14 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     console.log("Dialogflow Response body: " + JSON.stringify(response.body));
     console.log("---");*/
 
-    function WebCallIntent(agent) {
+    async function WebCallIntent(agent) {
       // parameters gathered by the QueryHandler
       var painType = agent.parameters["paintypes"];
       var injury = agent.parameters["injury"];
       var location = agent.parameters["specific-location"];
       var causeOfPain = agent.parameters["causeOfPain"];
+      var address = agent.parameters["address"];
+      const ubcCoords = [49.9423,119.3960];
       // contains all the information from the HTTP request form dialogFlow
       var json = request.body;
       // name of the agent making the back-end request
@@ -72,7 +73,18 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
       if (agentName == "chatbot-physio-bglf") ryanAgent(agent);
       if (agentName == "AmneetPlaceholder") amneetAgent(agent);
       if (agentName == "DaniilPlaceholder") daniilAgent(agent);
-      console.log("\nHere is the lattitude: " + getCoords("802 Academy Way, Kelowna, BC")[0]);
+      // ----- Addressing
+      if (typeof address !== 'undefined') {
+        //let result = await getCoords("802 Academy Way, Kelowna, BC");
+        //let userLat = await result.data.results[0].geometry.location.lat;
+        //let userLng = await result.data.results[0].geometry.location.lng;
+        let dirResult = await getDistance(address);
+        let duration = dirResult.data.rows[0].elements[0].duration.text;
+        let distance = dirResult.data.rows[0].elements[0].distance.text;
+        agent.add("Great! It'll take you " + duration + " to get to the clinic by car. We're about " + distance + " away. See you soon!");  
+        agent.end("");
+      }
+
       function ameliaAgent(agent) {
         // code here
       }
@@ -163,6 +175,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest(
     let intentMap = new Map();
     intentMap.set("ExerciseQueryHandler", WebCallExercise);
     intentMap.set("QueryHandler", WebCallIntent);
+    intentMap.set("Appointment", WebCallIntent);
     agent.handleRequest(intentMap);
   }
 );

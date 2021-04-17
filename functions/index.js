@@ -2,7 +2,7 @@
 // for Dialogflow fulfillment library docs, samples, and to report issues
 
 "use strict";
-const API_KEY = "AIzaSyBc9gkW8vWsz0tIEwO_a-prt-tNQcxjn90";
+const API_KEY = "";
 const functions = require("firebase-functions");
 const { WebhookClient } = require("dialogflow-fulfillment");
 const { Card, Suggestion } = require("dialogflow-fulfillment");

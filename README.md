@@ -36,4 +36,12 @@ https://github.com/sroarty/COSC310_Team15/blob/main/outline.pdf
   
 [Final Documentation](./COSC%20310%20-%20Final%20Documentation.pdf)
   
+# Update for Final individual project
+## List of New Features
+- Directions API to local clinic
+
+## Explanation
+The directions API is called from an intent inside the dialogflow interface. The fullfilment aspect is then used to make a call to the directions api and the resulting json is then processed and is displayed in the chat
+
+
   
